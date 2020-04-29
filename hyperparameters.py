@@ -23,7 +23,7 @@ num_gpu = 1
 learning_rate = 0.00001
 loss = tversky_loss
 metrics = [dice_coef]
-epochs = 20
+epochs = 180
 
 # Paths
 
