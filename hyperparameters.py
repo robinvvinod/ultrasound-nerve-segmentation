@@ -22,10 +22,10 @@ batchnorm = True
 num_gpu = 1
 batch_size = 2
 steps_per_epoch = 8
-learning_rate = 0.00001
+learning_rate = 0.0001
 loss = focal_tversky_loss
 metrics = [dice_coef]
-epochs = 4000
+epochs = 2000
 
 # Paths
 
