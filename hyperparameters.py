@@ -21,6 +21,7 @@ num_initial_filters = 32
 batchnorm = True
 num_gpu = 1
 batch_size = 2
+steps_per_epoch = 8
 learning_rate = 0.00001
 loss = focal_tversky_loss
 metrics = [dice_coef]
