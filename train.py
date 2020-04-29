@@ -43,7 +43,7 @@ print('Memory Footprint/GPU: ' + str(memory_usage(1, model)) + 'GB')
 ################################################################################
 
 list_IDs = []
-data_path = "/kaggle/input/train"
+data_path = "/kaggle/input/ultrasound-nerve-segmentation/train"
 for filename in os.listdir(data_path):
     if "mask" not in filename:
         list_IDs.append(f"{data_path}/{filename}")
