@@ -27,6 +27,6 @@ epochs = 20
 
 # Paths
 
-checkpoint_path = '/Users/RobinVinod/Documents/Coding/ML/ultrasound_nerve_segmentation/models/checkpoint.h5'
-log_path = '/Users/RobinVinod/Documents/Coding/ML/ultrasound_nerve_segmentation/models/log.txt'
-save_path = '/Users/RobinVinod/Documents/Coding/ML/ultrasound_nerve_segmentation/models/model.h5'
+checkpoint_path = '/kaggle/working/checkpoint.h5'
+log_path = '/kaggle/working/log.txt'
+save_path = '/kaggle/working/model.h5'
