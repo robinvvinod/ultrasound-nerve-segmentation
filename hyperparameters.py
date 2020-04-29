@@ -20,10 +20,11 @@ dropout = 0.5
 num_initial_filters = 32
 batchnorm = True
 num_gpu = 1
+batch_size = 4
 learning_rate = 0.00001
-loss = tversky_loss
+loss = focal_tversky_loss
 metrics = [dice_coef]
-epochs = 180
+epochs = 4000
 
 # Paths
 

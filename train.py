@@ -48,7 +48,7 @@ for filename in os.listdir(data_path):
     if "mask" not in filename:
         list_IDs.append(f"{data_path}/{filename}")
 
-train_gen = DataGenerator(list_IDs=list_IDs, dim=dimensions, batch_size=num_gpu, shuffle=True)
+train_gen = DataGenerator(list_IDs=list_IDs, dim=dimensions, batch_size=batch_size, shuffle=True)
 
 if num_gpu > 1:
     parallel_model.fit_generator(train_gen, steps_per_epoch=1, epochs=epochs, verbose=2, callbacks=callbacks, workers=20)
