@@ -10,21 +10,21 @@ def network(input_img, n_filters=16, dropout=0.5, batchnorm=True):
 
     # contracting path
     
-    c0 = inception_block(input_img, n_filters=n_filters, batchnorm=batchnorm, strides=1, recurrent=2, layers=((3,2),(5,1)))
+    c0 = residual_block(input_img, n_filters=n_filters, batchnorm=batchnorm, strides=1, recurrent=2)
     p0 = SpatialDropout2D(dropout * 0.5)(c0)
 
-    c1 = inception_block(p0, n_filters=n_filters * 2, batchnorm=batchnorm, strides=2, recurrent=2, layers=((3,2),(5,1)))
+    c1 = residual_block(p0, n_filters=n_filters * 2, batchnorm=batchnorm, strides=2, recurrent=2)
     p1 = SpatialDropout2D(dropout)(c1)
 
-    c2 = inception_block(p1, n_filters=n_filters * 4, batchnorm=batchnorm, strides=2, recurrent=2, layers=((3,2),(5,1)))
+    c2 = residual_block(p1, n_filters=n_filters * 4, batchnorm=batchnorm, strides=2, recurrent=2)
     p2 = SpatialDropout2D(dropout)(c2)
 
-    c3 = inception_block(p2, n_filters=n_filters * 8, batchnorm=batchnorm, strides=1, recurrent=2, layers=((3,2),(5,1)))
+    c3 = residual_block(p2, n_filters=n_filters * 8, batchnorm=batchnorm, strides=1, recurrent=2)
     p3 = SpatialDropout2D(dropout)(c3)
     
     # bridge
     
-    b0 = inception_block(p3, n_filters=n_filters * 16, batchnorm=batchnorm, strides=1, recurrent=2, layers=((3,2),(5,1)))
+    b0 = residual_block(p3, n_filters=n_filters * 16, batchnorm=batchnorm, strides=2, recurrent=2)
 
     # expansive path
     
@@ -43,7 +43,7 @@ def network(input_img, n_filters=16, dropout=0.5, batchnorm=True):
     u2 = transpose_block(d1, attn2, n_filters=n_filters * 2)
     d2 = SpatialDropout2D(dropout)(u2)
     
-    u3 = transpose_block(d2, p0, n_filters=n_filters)
+    u3 = transpose_block(d2, p0, n_filters=n_filters)  
     d3 = SpatialDropout2D(dropout)(u3)
 
     outputs = Conv2D(filters=1, kernel_size=1, strides=1, activation='sigmoid')(d3)
