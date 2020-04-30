@@ -1,4 +1,6 @@
 # yapf: disable
+import sys
+sys.path.append("../input")
 import os
 import tensorflow as tf
 from keras.layers import Input
