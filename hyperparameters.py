@@ -25,7 +25,7 @@ steps_per_epoch = 8
 learning_rate = 0.0001
 loss = focal_tversky_loss
 metrics = [dice_coef]
-epochs = 2000
+epochs = 2500
 
 # Paths
 
