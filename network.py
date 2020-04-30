@@ -24,7 +24,7 @@ def network(input_img, n_filters=16, dropout=0.5, batchnorm=True):
     
     # bridge
     
-    b0 = residual_block(p3, n_filters=n_filters * 16, batchnorm=batchnorm, strides=2, recurrent=2)
+    b0 = residual_block(p3, n_filters=n_filters * 16, batchnorm=batchnorm, strides=1, recurrent=2)
 
     # expansive path
     
