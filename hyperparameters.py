@@ -29,6 +29,6 @@ epochs = 2500
 
 # Paths
 
-checkpoint_path = '/kaggle/working/checkpoint'
-log_path = '/kaggle/working/log.txt'
-save_path = '/kaggle/working/model'
+checkpoint_path = 'checkpoint'
+log_path = 'log.txt'
+save_path = 'model'
