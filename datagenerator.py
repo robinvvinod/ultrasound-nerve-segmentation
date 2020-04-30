@@ -19,7 +19,7 @@ class DataGenerator(Sequence):
         return int(np.floor(len(self.list_IDs) / self.batch_size))
 
     def __getitem__(self, index):
-
+        
         indexes = self.indexes[index * self.batch_size:(index + 1) * self.batch_size]
         list_IDs_temp = [self.list_IDs[k] for k in indexes]
 
@@ -28,13 +28,13 @@ class DataGenerator(Sequence):
         return X, y
 
     def on_epoch_end(self):
-
+        
         self.indexes = np.arange(len(self.list_IDs))
         if self.shuffle:
             np.random.shuffle(self.indexes)
 
     def __data_generation(self, list_IDs_temp):
-
+        print("generate item", list_IDs_temp)
         # Creates an empty placeholder array that will be populated with data that is to be supplied
         X = np.empty((self.batch_size, *self.dim, self.n_channels))
         y = np.empty((self.batch_size, *self.dim, self.n_channels))

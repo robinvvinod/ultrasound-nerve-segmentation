@@ -17,7 +17,7 @@ dimensions = (420,580)
 dropout = 0.5
 
 # Training parameters
-num_initial_filters = 32
+num_initial_filters = 2
 batchnorm = True
 num_gpu = 1
 batch_size = 2
