@@ -1,6 +1,6 @@
 # yapf: disable
 import sys
-sys.path.append("../input")
+sys.path.append("../input/ultrasoundfiles")
 import os
 import tensorflow as tf
 from keras.layers import Input
@@ -21,7 +21,7 @@ K.set_image_data_format('channels_last')
 
 input_img = Input(input_dimensions)
 with tf.device('/cpu:0'):
-    model = network(input_img, n_filters=num_initial_filters, dropout=dropout, batchnorm=batchnorm)
+    model = network(input_img, n_filters=num_initial_filters, batchnorm=batchnorm)
 
 if num_gpu > 1:
     parallel_model = multi_gpu_model(model, gpus=num_gpu, cpu_merge=False)
@@ -31,7 +31,7 @@ else:
 
 callbacks = [
     # EarlyStopping(monitor='', patience=400, verbose=1),
-    # ReduceLROnPlateau(factor=0.1, monitor='', patience=50, min_lr=0.00001, verbose=1, mode='max'),
+    ReduceLROnPlateau(factor=0.1, monitor='dice_coef', patience=50, min_lr=0.000001, verbose=1, mode='max'),
     # ModelCheckpoint(checkpoint_path, monitor='', mode='max', verbose=0, save_best_only=True),
     CSVLogger(log_path, separator=',', append=True),
     TerminateOnNaN()
