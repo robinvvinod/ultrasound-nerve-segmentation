@@ -46,9 +46,9 @@ class DataGenerator(Sequence):
             # Converting into binary array of 0s and 1s
             im = np.where(im == 255, 1, 0)
             gt = np.where(gt == 255, 1, 0)
-
-            im = ZeroPadding2D(padding=(30,30))(im)
-            gt = ZeroPadding2D(padding=(30,30))(gt)
+            
+            im = np.pad(im, ( (30,30),(30,30) ), 'constant')
+            gt = np.pad(gt, ( (30,30),(30,30) ), 'constant')
 
             im = np.reshape(im, (480,640,1))
             gt = np.reshape(gt, (480,640,1))

@@ -8,7 +8,7 @@ from layers2D import *
 def network(input_img, n_filters=16, dropout=0.5, batchnorm=True):
 
     # contracting path
-    
+
     c0 = residual_block(input_img, n_filters=n_filters, batchnorm=batchnorm, strides=1, recurrent=2)  # 480x640
 
     c1 = inception_block(c0, n_filters=n_filters * 2, batchnorm=batchnorm, strides=2, recurrent=2, layers=[[(3,1),(3,1)], [(3,2)]])  # 240x320
