@@ -1,5 +1,6 @@
 # yapf: disable
 from keras.utils import Sequence
+from keras.layers.convolutional import ZeroPadding2D
 import numpy as np
 from PIL import Image
 
@@ -46,8 +47,12 @@ class DataGenerator(Sequence):
             im = np.where(im == 255, 1, 0)
             gt = np.where(gt == 255, 1, 0)
 
-            im = np.reshape(im, (420,580,1))
-            gt = np.reshape(gt, (420,580,1))
+            im = ZeroPadding2D(padding=(30,30))(im)
+            gt = ZeroPadding2D(padding=(30,30))(gt)
+
+            im = np.reshape(im, (480,640,1))
+            gt = np.reshape(gt, (480,640,1))
+
             X[i, ] = im
             y[i, ] = gt
 

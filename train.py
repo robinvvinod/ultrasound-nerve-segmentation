@@ -31,7 +31,7 @@ else:
 
 callbacks = [
     # EarlyStopping(monitor='', patience=400, verbose=1),
-    ReduceLROnPlateau(factor=0.1, monitor='dice_coef', patience=50, min_lr=0.000001, verbose=1, mode='max'),
+    ReduceLROnPlateau(factor=0.1, monitor='dice_coef', patience=75, min_lr=0.0000001, verbose=1, mode='max'),
     # ModelCheckpoint(checkpoint_path, monitor='', mode='max', verbose=0, save_best_only=True),
     CSVLogger(log_path, separator=',', append=True),
     TerminateOnNaN()

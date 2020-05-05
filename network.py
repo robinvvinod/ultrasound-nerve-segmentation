@@ -9,17 +9,17 @@ def network(input_img, n_filters=16, dropout=0.5, batchnorm=True):
 
     # contracting path
     
-    c0 = residual_block(input_img, n_filters=n_filters, batchnorm=batchnorm, strides=1, recurrent=2)
+    c0 = residual_block(input_img, n_filters=n_filters, batchnorm=batchnorm, strides=1, recurrent=2)  # 480x640
 
-    c1 = inception_block(c0, n_filters=n_filters * 2, batchnorm=batchnorm, strides=2, recurrent=2, layers=[[(3,1),(3,1)], [(3,2)]])
+    c1 = inception_block(c0, n_filters=n_filters * 2, batchnorm=batchnorm, strides=2, recurrent=2, layers=[[(3,1),(3,1)], [(3,2)]])  # 240x320
 
-    c2 = inception_block(c1, n_filters=n_filters * 4, batchnorm=batchnorm, strides=2, recurrent=2, layers=[[(3,1),(3,1)], [(3,2)]])
+    c2 = inception_block(c1, n_filters=n_filters * 4, batchnorm=batchnorm, strides=2, recurrent=2, layers=[[(3,1),(3,1)], [(3,2)]])  # 120x160
 
-    c3 = inception_block(c2, n_filters=n_filters * 8, batchnorm=batchnorm, strides=1, recurrent=2, layers=[[(3,1),(3,1)], [(3,2)]])
+    c3 = inception_block(c2, n_filters=n_filters * 8, batchnorm=batchnorm, strides=2, recurrent=2, layers=[[(3,1),(3,1)], [(3,2)]])  # 60x80
     
     # bridge
     
-    b0 = inception_block(c3, n_filters=n_filters * 16, batchnorm=batchnorm, strides=1, recurrent=2, layers=[[(3,1),(3,1)], [(3,2)]])
+    b0 = inception_block(c3, n_filters=n_filters * 16, batchnorm=batchnorm, strides=1, recurrent=2, layers=[[(3,1),(3,1)], [(3,2)]])  # 30x40
 
     # expansive path
     

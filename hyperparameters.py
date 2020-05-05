@@ -9,9 +9,9 @@ alpha = 0.1
 
 # Input Image Dimensions 
 # (rows, cols, channels)
-input_dimensions = (420,580,1)
+input_dimensions = (480,640,1)
 # (rows, cols)
-dimensions = (420,580)
+dimensions = (480,640)
 
 # Dropout probability
 dropout = 0.5
